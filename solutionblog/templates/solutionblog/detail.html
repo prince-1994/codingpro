@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="columns">
+  <div class="column"></div>
+  <div class="container column is-four-fifths">
+    <div class="content">
+      <p class="title">{{ question.name }}</p>
+      <span class="tag"><p>{{ question.platform }}</p></span>
+    </div>
+    
+    <div class="content">
+      <pre>{{ question.text }}</pre>
+    </div>
+  
+    {% for solution in question.solutions.all %}
+      
+    <div class="box">
+      <p class="subtitle">{{ solution.language }}</p>
+        <pre>{{ solution.code }}</pre>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="column"></div>
+</div>
+
+
+{% endblock %}

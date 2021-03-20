@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  {% for question in questions %}
+  <div class="block">
+    <a href="{% url 'detail' question.id %}">
+      <div class="card">
+        <div class="card-header">
+          <p class="card-header-title">{{ question.name }}</p>
+        </div>
+        <div class="card-content">
+          <div class="content">
+            <span class="tag"><p>{{ question.platform }}</p></span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor%}
+</div>
+
+{% endblock%}
