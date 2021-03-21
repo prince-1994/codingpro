@@ -1,5 +1,8 @@
 *.env
-db.*
+*db.*
 *.pyc
 *.pyo
 .vscode
+
+*venv
+dumps
