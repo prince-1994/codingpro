@@ -13,6 +13,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(":")
 
+SQLITE_DB_NAME = env('SQLITE_DB_NAME')
+
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -25,10 +27,18 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': PROJECT_DIR / 'prod.db.sqlite3',
+        'NAME': PROJECT_DIR / SQLITE_DB_NAME,
     }
 }
 
 CSRF_COOKIE_SECURE = True
 
 SESSION_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 3600
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_HSTS_PRELOAD = True
+
+SECURE_SSL_REDIRECT = True
