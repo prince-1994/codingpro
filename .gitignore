@@ -8,3 +8,5 @@
 dumps
 *.pem
 *.cer
+
+static

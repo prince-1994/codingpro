@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from solutionblog.views import detail, frontpage, platformpage
 
 urlpatterns = [
@@ -23,4 +26,4 @@ urlpatterns = [
     path('', frontpage, name='frontpage'),
     path('platorms/<int:platformId>', platformpage, name='platformpage'),
     path('questions/<int:id>', detail, name='detail'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
