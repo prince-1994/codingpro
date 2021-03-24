@@ -19,11 +19,16 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from solutionblog.views import detail, frontpage, platformpage
+from solutionblog.views import detail, frontpage, platformpage, topicpage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', frontpage, name='frontpage'),
     path('platorms/<int:platformId>', platformpage, name='platformpage'),
-    path('questions/<int:id>', detail, name='detail'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('topics/<int:topicId>', topicpage, name='topicpage'),
+    path('questions/<int:questionId>', detail, name='detail'),
+    
+]
+
+print(settings.STATIC_URL)
+print(settings.STATIC_ROOT)

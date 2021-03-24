@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Platform, Question, Language, Solution, Example
+from .models import Platform, Question, Language, Solution, Example, Topic
 
 class ExampleInline(admin.StackedInline):
   model = Example
@@ -16,5 +16,6 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Platform)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Language)
+admin.site.register(Topic)
 
 

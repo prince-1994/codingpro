@@ -1,18 +1,39 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
 
+
+{% block rightside %}
+<div class="container px-4">
+  <div class="card">
+    <div class="card-header">
+      <p class="card-header-title is-size-4">
+        <strong>Topics</strong>
+      </p>
+    </div>
+  </div>
+  <div class="mt-4">
+    {% for topic in topics %}
+    <div class="block">
+      <a href="{% url 'topicpage' topic.id %}" class="box">
+        <p class="subtitle has-text-black">{{ topic.name }}</p>
+      </a>
+    </div>
+    {% endfor%}
+  </div>
+</div>
+{% endblock %} 
+
+
+{% block content %}
 <div class="container">
+  <p class="title">Recently Published Solutions</p>
   {% for question in questions %}
   <div class="block">
     <a href="{% url 'detail' question.id %}">
-      <div class="card">
-        <div class="card-header">
-          <p class="card-header-title">{{ question.name }}</p>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag"><p>{{ question.platform }}</p></span>
-          </div>
-        </div>
+      <div class="box has-background-dark is-shadowless">
+        <p class="subtitle has-text-white">{{ question.name }}</p>
+        <span class="tag has-background-warning">
+          <p class="has-text-black">{{ question.platform }}</p>
+        </span>
       </div>
     </a>
   </div>

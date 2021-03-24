@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Question, Platform, Solution, Language
+from .models import Question, Platform, Solution, Language, Topic
 
 def frontpage(request):
   questions = Question.objects.all()
@@ -13,12 +13,20 @@ def platformpage(request, platformId):
   platform = Platform.objects.get(pk=platformId)
   questions = platform.questions.all()
   context = {
-    'questions' : questions
+    'questions' : questions,
   }
   return render(request, "solutionblog/frontpage.html", context)
 
-def detail(request, id):
-  question = Question.objects.get(pk=id)
+def topicpage(request, topicId):
+  topic = Topic.objects.get(pk=platformpage)
+  questions = topic.questions.all()
+  context = {
+    'questions' : questions,
+  }
+  return render(request, "solutionblog/frontpage.html", context)
+
+def detail(request, questionId):
+  question = Question.objects.get(pk=questionId)
   context = {
     'question' : question
   }
