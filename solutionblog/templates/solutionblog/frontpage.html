@@ -43,7 +43,7 @@
 
           <div class="level-right">
             <div class="level-item">
-              {% for topic in question.topic_set.all %}
+              {% for topic in question.topics.all %}
               <span class="tag has-background-white mx-1">
                 <p class="has-text-black">{{ topic.name }}</p>
               </span>
