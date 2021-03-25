@@ -18,7 +18,7 @@ class Question(models.Model):
   name = models.CharField(max_length=300)
   text = models.TextField()
   platform = models.ForeignKey(Platform, null=True,blank=True, related_name='questions', on_delete=CASCADE)
-  topic = models.ManyToManyField(Topic, blank=True)
+  topic = models.ManyToManyField(Topic, blank=True, related_name="questions")
   def __str__(self):
     return self.name
 
