@@ -9,12 +9,16 @@ class Platform(models.Model):
   def __str__(self):
     return self.name
 
+class Topic(models.Model):
+  name = models.CharField(max_length=100)
+  def __str__(self):
+    return self.name
 
 class Question(models.Model):
   name = models.CharField(max_length=300)
   text = models.TextField()
   platform = models.ForeignKey(Platform, null=True,blank=True, related_name='questions', on_delete=CASCADE)
-
+  topic = models.ManyToManyField(Topic, blank=True)
   def __str__(self):
     return self.name
 
@@ -34,10 +38,4 @@ class Solution(models.Model):
   question = models.ForeignKey(Question, related_name='solutions', on_delete=CASCADE)
   code = models.TextField()
 
-class Topic(models.Model):
-  name = models.CharField(max_length=100)
-  questions = models.ManyToManyField(Question)
-
-  def __str__(self):
-    return self.name
 
