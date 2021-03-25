@@ -15,7 +15,7 @@
       role="navigation"
       aria-label="main navigation"
     >
-      <div class="container">
+      
         <div class="navbar-brand ">
           <a href="{% url 'frontpage' %}" class="navbar-item has-text-black"
             ><strong>CodingPro</strong></a
@@ -58,9 +58,10 @@
           </a> -->
           </div>
         </div>
-      </div>
+      
     </nav>
 <!-- <div class="container"> -->
+  {% block fullpage %}
     <div class="columns">
       <div class="column">
         {% block rightside %} {% endblock %}
@@ -74,6 +75,6 @@
       </div>
     </div>
   <!-- </div> -->
-    
+  {% endblock %}
   </body>
 </html>

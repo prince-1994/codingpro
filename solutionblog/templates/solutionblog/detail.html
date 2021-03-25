@@ -1,28 +1,50 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block fullpage %}
+<div class="mx-6">
+  <div class="columns">
+    <div class="column is-half">
+      <div class="content">
+        <p class="title">{{ question.name }}</p>
+        <div class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <span class="tag has-background-warning">
+                <p class="has-text-black">{{ question.platform }}</p>
+              </span>
+            </div>
+          </div>
 
-{% block content %}
-<div class="columns">
-  <div class="column"></div>
-  <div class="container column is-four-fifths">
-    <div class="content">
-      <p class="title">{{ question.name }}</p>
-      <span class="tag"><p>{{ question.platform }}</p></span>
-    </div>
-    
-    <div class="content">
-      <pre>{{ question.text }}</pre>
+          <div class="level-right">
+            <div class="level-item">
+              {% for topic in question.topic_set.all %}
+              <span class="tag has-background-black mx-1">
+                <p class="has-text-white">{{ topic.name }}</p>
+              </span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content">{{ question.text }}</div>
+      {% for example in question.examples.all %}
+        <div class="columns">
+          <div class="column">
+            <pre>{{ example.input }}</pre>
+          </div>
+          <div class="column">
+            <pre>{{ example.output }}</pre>
+          </div>
+        </div>
+      {% endfor %}
     </div>
   
+
+  <div class="column">
     {% for solution in question.solutions.all %}
-      
-    <div class="box">
-      <p class="subtitle">{{ solution.language }}</p>
-        <pre>{{ solution.code }}</pre>
-      </div>
+      <p class="is-size-4">{{ solution.language }}</p>
+      <pre>{{ solution.code }}</pre>
     {% endfor %}
   </div>
-  <div class="column"></div>
 </div>
-
+</div>
 
 {% endblock %}

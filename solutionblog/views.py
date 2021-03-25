@@ -18,7 +18,7 @@ def platformpage(request, platformId):
   return render(request, "solutionblog/frontpage.html", context)
 
 def topicpage(request, topicId):
-  topic = Topic.objects.get(pk=platformpage)
+  topic = Topic.objects.get(pk=topicId)
   questions = topic.questions.all()
   context = {
     'questions' : questions,

@@ -24,11 +24,8 @@ from solutionblog.views import detail, frontpage, platformpage, topicpage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', frontpage, name='frontpage'),
-    path('platorms/<int:platformId>', platformpage, name='platformpage'),
+    path('platforms/<int:platformId>', platformpage, name='platformpage'),
     path('topics/<int:topicId>', topicpage, name='topicpage'),
     path('questions/<int:questionId>', detail, name='detail'),
     
 ]
-
-print(settings.STATIC_URL)
-print(settings.STATIC_ROOT)

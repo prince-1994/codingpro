@@ -24,6 +24,7 @@
 
 
 {% block content %}
+
 <div class="container">
   <p class="title">Recently Published Solutions</p>
   {% for question in questions %}
@@ -31,9 +32,26 @@
     <a href="{% url 'detail' question.id %}">
       <div class="box has-background-dark is-shadowless">
         <p class="subtitle has-text-white">{{ question.name }}</p>
-        <span class="tag has-background-warning">
-          <p class="has-text-black">{{ question.platform }}</p>
-        </span>
+        <div class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <span class="tag has-background-warning">
+                <p class="has-text-black">{{ question.platform }}</p>
+              </span>
+            </div>
+          </div>
+
+          <div class="level-right">
+            <div class="level-item">
+              {% for topic in question.topic_set.all %}
+              <span class="tag has-background-white mx-1">
+                <p class="has-text-black">{{ topic.name }}</p>
+              </span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        
       </div>
     </a>
   </div>
